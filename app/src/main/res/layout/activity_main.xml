@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/input_nPoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введіть nPoint" />
+
+    <EditText
+        android:id="@+id/input_xMin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введіть xMin" />
+
+    <EditText
+        android:id="@+id/input_xMax"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введіть xMax" />
+
+    <EditText
+        android:id="@+id/input_yMin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введіть yMin" />
+
+    <EditText
+        android:id="@+id/input_yMax"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введіть yMax" />
+
+    <Button
+        android:id="@+id/go_to_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Передати дані" />
+</LinearLayout>
