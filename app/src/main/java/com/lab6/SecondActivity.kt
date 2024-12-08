@@ -23,7 +23,6 @@ class SecondActivity : AppCompatActivity() {
 
   override fun onResume() {
     super.onResume()
-    // Refresh the displayed data
     updateData()
   }
 

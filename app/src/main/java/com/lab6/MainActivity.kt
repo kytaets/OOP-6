@@ -32,10 +32,8 @@ class MainActivity : AppCompatActivity() {
           Pair(Random.nextInt(xMin, xMax + 1), Random.nextInt(yMin, yMax + 1))
         }
 
-        // Write points to file
         DataManager.writePoints(this, points)
 
-        // Open SecondActivity
         startActivity(Intent(this, SecondActivity::class.java))
       } else {
         nPointInput.error = "Перевірте введені значення"
@@ -43,8 +41,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     closeButton.setOnClickListener {
-      DataManager.clearData(this) // Clear data
-      finishAffinity() // Close all activities
+      DataManager.clearData(this)
+      finishAffinity()
     }
   }
 }
