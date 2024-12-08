@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,19 +19,31 @@ class MainActivity : AppCompatActivity() {
     val yMinInput = findViewById<EditText>(R.id.input_yMin)
     val yMaxInput = findViewById<EditText>(R.id.input_yMax)
 
-    // Кнопка для переходу до SecondActivity
-    val goToSecondButton = findViewById<Button>(R.id.go_to_second)
-    goToSecondButton.setOnClickListener {
-      val intent = Intent(this, SecondActivity::class.java)
+    // Кнопка для генерації та передачі
+    val generateButton = findViewById<Button>(R.id.generate_button)
+    generateButton.setOnClickListener {
+      // Зчитуємо значення
+      val nPoint = nPointInput.text.toString().toIntOrNull() ?: 0
+      val xMin = xMinInput.text.toString().toIntOrNull() ?: 0
+      val xMax = xMaxInput.text.toString().toIntOrNull() ?: 0
+      val yMin = yMinInput.text.toString().toIntOrNull() ?: 0
+      val yMax = yMaxInput.text.toString().toIntOrNull() ?: 0
 
-      // Передача даних через Intent
-      intent.putExtra("nPoint", nPointInput.text.toString())
-      intent.putExtra("xMin", xMinInput.text.toString())
-      intent.putExtra("xMax", xMaxInput.text.toString())
-      intent.putExtra("yMin", yMinInput.text.toString())
-      intent.putExtra("yMax", yMaxInput.text.toString())
+      // Перевірка діапазонів
+      if (nPoint > 0 && xMin < xMax && yMin < yMax) {
+        // Генерація випадкових пар (x, y)
+        val points = List(nPoint) {
+          Pair(Random.nextInt(xMin, xMax + 1), Random.nextInt(yMin, yMax + 1))
+        }
 
-      startActivity(intent)
+        // Передача даних у SecondActivity
+        val intent = Intent(this, SecondActivity::class.java)
+        intent.putExtra("points", ArrayList(points)) // Передаємо як ArrayList
+        startActivity(intent)
+      } else {
+        // Помилка, якщо дані введено некоректно
+        nPointInput.error = "Перевірте введені значення"
+      }
     }
   }
 }

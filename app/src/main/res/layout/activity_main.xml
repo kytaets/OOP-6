@@ -8,35 +8,35 @@
         android:id="@+id/input_nPoint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введіть nPoint" />
+        android:hint="Кількість точок (nPoint)" />
 
     <EditText
         android:id="@+id/input_xMin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введіть xMin" />
+        android:hint="Мінімальне x (xMin)" />
 
     <EditText
         android:id="@+id/input_xMax"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введіть xMax" />
+        android:hint="Максимальне x (xMax)" />
 
     <EditText
         android:id="@+id/input_yMin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введіть yMin" />
+        android:hint="Мінімальне y (yMin)" />
 
     <EditText
         android:id="@+id/input_yMax"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Введіть yMax" />
+        android:hint="Максимальне y (yMax)" />
 
     <Button
-        android:id="@+id/go_to_second"
+        android:id="@+id/generate_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Передати дані" />
+        android:text="Генерувати точки та перейти" />
 </LinearLayout>

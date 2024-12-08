@@ -5,14 +5,15 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/display_text"
+        android:id="@+id/result_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Дані ще не отримано" />
+        android:paddingBottom="16dp"
+        android:text="Очікування даних..." />
 
     <Button
-        android:id="@+id/go_to_third"
+        android:id="@+id/next_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Передати далі" />
+        android:text="Перейти далі" />
 </LinearLayout>

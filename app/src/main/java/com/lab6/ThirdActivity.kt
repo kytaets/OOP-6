@@ -9,15 +9,16 @@ class ThirdActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_third)
 
-    // Отримання даних від SecondActivity
-    val nPoint = intent.getStringExtra("nPoint")
-    val xMin = intent.getStringExtra("xMin")
-    val xMax = intent.getStringExtra("xMax")
-    val yMin = intent.getStringExtra("yMin")
-    val yMax = intent.getStringExtra("yMax")
+    // Отримання даних із Intent
+    val points = intent.getSerializableExtra("points") as? ArrayList<Pair<Int, Int>>
 
-    // Відображення отриманих даних
-    val displayText = findViewById<TextView>(R.id.display_text)
-    displayText.text = "Дані отримано:\n\nnPoint: $nPoint\nxMin: $xMin\nxMax: $xMax\nyMin: $yMin\nyMax: $yMax"
+    // Відображення у TextView
+    val resultView = findViewById<TextView>(R.id.result_text)
+    if (points != null) {
+      val pointsText = points.joinToString("\n") { "(${it.first}, ${it.second})" }
+      resultView.text = "Передані точки:\n$pointsText"
+    } else {
+      resultView.text = "Дані відсутні!"
+    }
   }
 }
