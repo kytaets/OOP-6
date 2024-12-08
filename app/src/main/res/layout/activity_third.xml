@@ -4,6 +4,21 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/prev_bbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginRight="7dp"
+            android:text="Назад" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/no_data_text"
         android:layout_width="wrap_content"
@@ -11,11 +26,11 @@
         android:layout_gravity="center"
         android:visibility="gone"
         android:text="Дані відсутні!"
-        android:textSize="18sp"
-        android:textColor="#FF0000" />
+        android:textSize="18sp"/>
 
     <com.lab6.CustomGraphView
         android:id="@+id/graph_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 </LinearLayout>

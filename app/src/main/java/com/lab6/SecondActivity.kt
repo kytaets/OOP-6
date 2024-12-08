@@ -12,10 +12,19 @@ class SecondActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_second)
-
     resultView = findViewById(R.id.result_text)
-    val nextButton = findViewById<Button>(R.id.next_button)
 
+    startActivity(Intent(this, ThirdActivity::class.java))
+
+    val prevButton = findViewById<Button>(R.id.prev_bbutton)
+    prevButton.setOnClickListener {
+      val intent = Intent(this, MainActivity::class.java)
+      intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+      startActivity(intent)
+      finish()
+    }
+
+    val nextButton = findViewById<Button>(R.id.next_button)
     nextButton.setOnClickListener {
       startActivity(Intent(this, ThirdActivity::class.java))
     }
