@@ -7,28 +7,32 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class SecondActivity : AppCompatActivity() {
+  private lateinit var resultView: TextView
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_second)
 
-    // Отримання даних із Intent
-    val points = intent.getSerializableExtra("points") as? ArrayList<Pair<Int, Int>>
+    resultView = findViewById(R.id.result_text)
+    val nextButton = findViewById<Button>(R.id.next_button)
 
-    // Відображення у TextView
-    val resultView = findViewById<TextView>(R.id.result_text)
-    if (points != null) {
-      val pointsText = points.joinToString("\n") { "(${it.first}, ${it.second})" }
-      resultView.text = "Згенеровані точки:\n$pointsText"
+    nextButton.setOnClickListener {
+      startActivity(Intent(this, ThirdActivity::class.java))
+    }
+  }
+
+  override fun onResume() {
+    super.onResume()
+    // Refresh the displayed data
+    updateData()
+  }
+
+  private fun updateData() {
+    val points = DataManager.readPoints(this)
+    if (points != null && points.isNotEmpty()) {
+      resultView.text = points.joinToString("\n") { "(${it.first}, ${it.second})" }
     } else {
       resultView.text = "Дані відсутні!"
-    }
-
-    // Кнопка для переходу на третє вікно
-    val nextButton = findViewById<Button>(R.id.next_button)
-    nextButton.setOnClickListener {
-      val intent = Intent(this, ThirdActivity::class.java)
-      intent.putExtra("points", points) // Передаємо точки далі
-      startActivity(intent)
     }
   }
 }
